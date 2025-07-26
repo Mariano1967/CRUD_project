@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CRUD_Operations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <fieldset>
+    <legend>
+     <h2>Solicitud de Renta </h2>
+      </legend>
+      <form id = "form">
+    <input type="text" id="Nombre y apellidos" Nombre y apellidos = "Nombre y apellidos"  placeholder="Nombre y apellidos"><br><br>
+    <input type="text" id="Direccion" Direccion = "Direccion"  placeholder="Direccion"><br><br>
+    <input type="text" id="Curp" Curp = "Curp"  placeholder="Curp"><br><br>
+    <input type="text" id="Telefono" Telefono = "Telefono"  placeholder="Telefono"><br><br>
+    <input type="text" id="Email" Correo = "Email"  placeholder="Email"><br><br>
+    
+    <input type="button" value="Enviar" id="btn" onclick="Enviar()">
+    <input type= "reset" value="Reset">
+   </form>
+   </fieldset>
+
+   <br>
+   <div id="msg"></div><br>
+ <fieldset>
+   <legend>
+    <h2>Datos de local storage</h2>
+  </legend>
+  <table border="3" id="table">
+   
+     <tr>
+        <td class="col">Nombre y apellidos</td>
+        <td class="col">Direccion</td>
+        <td class="col">Curp</td>
+        <td class="col">Telefono</td>
+        <td class="col">Email</td>
+      
+    </tr>
+  </table>
+</fieldset>
+   
+
+
+
+
+    
+ </body>
+<script src="script.js"></script>
+</html>

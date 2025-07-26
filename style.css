@@ -1,0 +1,24 @@
+body{background-color:rgb(88, 88, 189);
+color: white;
+}
+table{
+    border-color:white;
+
+}
+td{padding: 8px 16px;
+}
+.col{
+    font-weight: bold;
+    font-size: 18px;
+    background-color: salmon;
+}
+
+      tr{
+        background-color: rgb(88, 88, 189);
+        color: black;
+        text-align: center;
+    }
+    input{
+        font-size: 16;
+    }
+     
