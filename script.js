@@ -7,28 +7,40 @@ let row = null;
 function Enviar() {
     let dataEntered =retriveData();
     let readData = readingDataFromLocalstarage(dataEntered);
-   if (row == null){
+   if(dataEntered == false) {
+    msg.innerHTML="Por favor, ingrese todos los campos!";
+   }
+   else {
+        if (row == null){
     insert(readData);
-    msg.innerHTML = "Datos insertados correctamente!";
-    } else {Update();
-    msg.innerHTML="Datos actualizados correctamente";
-
-    }
+    msg.innerHTML = "Datos insertados !";
+    } else {
+       Update();
+    msg.innerHTML="Datos actualizados ";
+}
+}
+document.getElementById("form").reset();// Limpiar el formulario después de enviar los datos
 } 
+  
+  
     document.getElementById("form").reset ();
     
     //CREAR
    //Funcion para recuperar los datos del formulario
     function retriveData() {
-    let nombreyapellidos = document.getElementById("Nombre").value;
+    let Nombre = document.getElementById("Nombre").value;
     let direccion = document.getElementById("Direccion").value;
     let curp = document.getElementById("Curp").value;
     let telefono = document.getElementById("Telefono").value;
     let Email = document.getElementById("Email").value;
     
-    let array = [nombreyapellidos, direccion, curp, telefono, Email];
-    // va a regresar todos los valores que se ingresaron en el formulario
-    return array;
+    let array = [Nombre, direccion, curp, telefono, Email];
+    
+    if (array.includes("")){
+        return false;
+    } else {return array;
+
+    }// va a regresar todos los valores que se ingresaron en el formulario con unmensaje de error si no se ingresaron todos los campos
     }
    //READ
   //Data en localStorage
@@ -62,8 +74,8 @@ function Enviar() {
         row.insertCell(2).innerHTML = readData[2];
         row.insertCell(3).innerHTML = readData[3];
         row.insertCell(4).innerHTML = readData[4];
-          row.insertCell(5).innerHTML = `<button onclick="Remove(this)">Borrar</button>
-                                          <button onclick="edit(this)">Editar</button>`;
+          row.insertCell(5).innerHTML = `<button onclick="edit(this)">Editar</button>
+                                          <button onclick="Remove(this)">Borrar</button>`;
       }
   
   //EDITAR
@@ -81,7 +93,7 @@ function Enviar() {
   //BORRAR
   function Remove(td) {
       if (confirm("¿Seguro que quieres eliminar este registro?")) {
-          let row = td.parentElement.parentElement;
+          row = td.parentElement.parentElement;
           document.getElementById("table").deleteRow(row.rowIndex);
           localStorage.clear();
           alert("Registro eliminado");
