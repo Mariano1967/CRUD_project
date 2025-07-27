@@ -8,15 +8,15 @@ function Enviar() {
     let dataEntered =retriveData();
     let readData = readingDataFromLocalstarage(dataEntered);
    if(dataEntered == false) {
-    msg.innerHTML="Por favor, ingrese todos los campos!";
+    msg.innerHTML= `<h3 style="color: red;">"Por favor, ingrese todos los campos!"</h3>`;
    }
    else {
         if (row == null){
     insert(readData);
-    msg.innerHTML = "Datos insertados !";
+    msg.innerHTML = `<h3 style ="color: green;"> "Datos insertados !"</h3>`;
     } else {
        Update();
-    msg.innerHTML="Datos actualizados ";
+    msg.innerHTML= `<h3 style="color: blue">"Datos actualizados!"</h3>`;
 }
 }
 document.getElementById("form").reset();// Limpiar el formulario después de enviar los datos
@@ -29,12 +29,12 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
    //Funcion para recuperar los datos del formulario
     function retriveData() {
     let Nombre = document.getElementById("Nombre").value;
-    let direccion = document.getElementById("Direccion").value;
-    let curp = document.getElementById("Curp").value;
-    let telefono = document.getElementById("Telefono").value;
+    let Direccion = document.getElementById("Direccion").value;
+    let Curp = document.getElementById("Curp").value;
+    let Telefono = document.getElementById("Telefono").value;
     let Email = document.getElementById("Email").value;
     
-    let array = [Nombre, direccion, curp, telefono, Email];
+    let array = [Nombre, Direccion, Curp, Telefono, Email];
     
     if (array.includes("")){
         return false;
@@ -48,17 +48,17 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
     
     //Data guardada en local storage
          let n = localStorage.setItem("Nombre", dataEntered[0]);
-         let d = localStorage.setItem("direccion", dataEntered[1]);
-         let c = localStorage.setItem("curp", dataEntered[2]);
-         let t = localStorage.setItem("telefono", dataEntered[3]);
+         let d = localStorage.setItem("Direccion", dataEntered[1]);
+         let c = localStorage.setItem("Curp", dataEntered[2]);
+         let t = localStorage.setItem("Telefono", dataEntered[3]);
          let k = localStorage.setItem("Email", dataEntered[4]);
 
             //sacar valores de localstorage hacia la segunda tabla
 
             let n1 = localStorage.getItem("Nombre",n);
-            let d1 = localStorage.getItem("direccion", d);
-            let c1 = localStorage.getItem("curp" ,c);
-            let t1 = localStorage.getItem("telefono",t);
+            let d1 = localStorage.getItem("Direccion", d);
+            let c1 = localStorage.getItem("Curp" ,c);
+            let t1 = localStorage.getItem("Telefono",t);
             let k1 = localStorage.getItem("Email",k);
 
             let array = [n1, d1, c1, t1, k1];
