@@ -2,19 +2,25 @@
  
 //VARIABLES GLOBALES
 
+let row = null;
+
 function Enviar() {
     let dataEntered =retriveData();
     let readData = readingDataFromLocalstarage(dataEntered);
-   console.log(readData);
+   if (row == null){
     insert(readData);
+    msg.innerHTML = "Datos insertados correctamente!";
+    } else {Update();
+    msg.innerHTML="Datos actualizados correctamente";
+
     }
-    
+} 
     document.getElementById("form").reset ();
     
     //CREAR
    //Funcion para recuperar los datos del formulario
     function retriveData() {
-    let nombreyapellidos = document.getElementById("Nombre y apellidos").value;
+    let nombreyapellidos = document.getElementById("Nombre").value;
     let direccion = document.getElementById("Direccion").value;
     let curp = document.getElementById("Curp").value;
     let telefono = document.getElementById("Telefono").value;
@@ -29,7 +35,7 @@ function Enviar() {
     function readingDataFromLocalstarage(dataEntered) {
     
     //Data guardada en local storage
-         let n = localStorage.setItem("nombre y apellidos", dataEntered[0]);
+         let n = localStorage.setItem("Nombre", dataEntered[0]);
          let d = localStorage.setItem("direccion", dataEntered[1]);
          let c = localStorage.setItem("curp", dataEntered[2]);
          let t = localStorage.setItem("telefono", dataEntered[3]);
@@ -37,7 +43,7 @@ function Enviar() {
 
             //sacar valores de localstorage hacia la segunda tabla
 
-            let n1 = localStorage.getItem("nombreyapellidos",n);
+            let n1 = localStorage.getItem("Nombre",n);
             let d1 = localStorage.getItem("direccion", d);
             let c1 = localStorage.getItem("curp" ,c);
             let t1 = localStorage.getItem("telefono",t);
@@ -51,18 +57,42 @@ function Enviar() {
     //INSERTAR para mostrar en la tabla de localstorage los valores que se inserten en la solicitud
     function insert(readData) {
        let row = table.insertRow(); 
-       let cell1 = row.insertCell(0);
-       let cell2 = row.insertCell(1);
-       let cell3 = row.insertCell(2);
-       let cell4 = row.insertCell(3);
-       let cell5 = row.insertCell(4);
+        row.insertCell(0).innerHTML = readData[0];
+        row.insertCell(1).innerHTML = readData[1];
+        row.insertCell(2).innerHTML = readData[2];
+        row.insertCell(3).innerHTML = readData[3];
+        row.insertCell(4).innerHTML = readData[4];
+          row.insertCell(5).innerHTML = `<button onclick="Remove(this)">Borrar</button>
+                                          <button onclick="edit(this)">Editar</button>`;
+      }
+  
+  //EDITAR
+  function edit(td) {
+      row = td.parentElement.parentElement;  
+      document.getElementById("Nombre").value = row.cells[0].innerHTML;  
+      document.getElementById("Direccion").value = row.cells[1].innerHTML;
+      document.getElementById("Curp").value = row.cells[2].innerHTML;
+      document.getElementById("Telefono").value = row.cells[3].innerHTML;
+      document.getElementById("Email").value = row.cells[4].innerHTML;                              
+  }
+  
 
-       cell1.innerHTML = readData[0];
-       cell2.innerHTML = readData[1];
-       cell3.innerHTML = readData[2];
-       cell4.innerHTML = readData[3];
-       cell5.innerHTML = readData[4];
-       
 
-
+  //BORRAR
+  function Remove(td) {
+      if (confirm("¿Seguro que quieres eliminar este registro?")) {
+          let row = td.parentElement.parentElement;
+          document.getElementById("table").deleteRow(row.rowIndex);
+          localStorage.clear();
+          alert("Registro eliminado");
+      }
+  }
+    //UPDATE
+    function Update() {
+        row.cells[0].innerHTML = document.getElementById("Nombre").value;
+        row.cells[1].innerHTML = document.getElementById("Direccion").value;
+        row.cells[2].innerHTML = document.getElementById("Curp").value;
+        row.cells[3].innerHTML = document.getElementById("Telefono").value;
+        row.cells[4].innerHTML = document.getElementById("Email").value;
+        row = null; // Resetear row to null despues de actualizar
     }
