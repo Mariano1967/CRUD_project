@@ -11,22 +11,29 @@
 <body>
    <fieldset>
     <legend>
-     <h2>Solicitud de membrecia </h2>
-      </legend>
-      <form id = "form">
+     
+      <h2>Solicitud de membrecia </h2>
+         </legend>  
+    <form id="form">
     <input type="text" id="Nombre" Nombre = "Nombre"  placeholder="Nombre"><br><br>
+    <input type="text" id="Apellido" Apellido = "Apellido"  placeholder="Apellido"><br><br>
     <input type="text" id="Direccion" Direccion = "Direccion"  placeholder="Direccion"><br><br>
     <input type="text" id="Curp" Curp = "Curp"  placeholder="Curp"><br><br>
     <input type="text" id="Telefono" Telefono = "Telefono"  placeholder="Telefono"><br><br>
     <input type="text" id="Email" Email = "Email"  placeholder="Email"><br><br>
-    
+     
     <input type="button" value="Enviar" id="btn" onclick="Enviar()">
     <input type= "reset" value="Reset">
    </form>
-   </fieldset>
+    </fieldset>
 
-   <br>
-   <div id="msg"></div><br>
+   <fieldset>
+   <legend>
+    <h4>Estado de datos   </h4>
+   <div id="msg"> </div>
+  </legend>
+</fieldset>
+
  <fieldset>
    <legend>
     <h2>Datos en local storage </h2>
@@ -35,6 +42,7 @@
 
      <tr> 
         <td class="col">Nombre</td>
+        <td class="col">Apellido</td>
         <td class="col">Direccion</td>
         <td class="col">Curp</td>
         <td class="col">Telefono</td>

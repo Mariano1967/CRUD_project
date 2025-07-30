@@ -29,12 +29,13 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
    //Funcion para recuperar los datos del formulario
     function retriveData() {
     let Nombre = document.getElementById("Nombre").value;
+    let Apellido = document.getElementById("Apellido").value;
     let Direccion = document.getElementById("Direccion").value;
     let Curp = document.getElementById("Curp").value;
     let Telefono = document.getElementById("Telefono").value;
     let Email = document.getElementById("Email").value;
     
-    let array = [Nombre, Direccion, Curp, Telefono, Email];
+    let array = [Nombre, Apellido,Direccion, Curp, Telefono, Email];
     
     if (array.includes("")){
         return false;
@@ -48,20 +49,22 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
     
     //Data guardada en local storage
          let n = localStorage.setItem("Nombre", dataEntered[0]);
-         let d = localStorage.setItem("Direccion", dataEntered[1]);
-         let c = localStorage.setItem("Curp", dataEntered[2]);
-         let t = localStorage.setItem("Telefono", dataEntered[3]);
-         let k = localStorage.setItem("Email", dataEntered[4]);
+         let a = localStorage.setItem("Apellido", dataEntered[1]);
+         let d = localStorage.setItem("Direccion", dataEntered[2]);
+         let c = localStorage.setItem("Curp", dataEntered[3]);
+         let t = localStorage.setItem("Telefono", dataEntered[4]);
+         let k = localStorage.setItem("Email", dataEntered[5]);
 
             //sacar valores de localstorage hacia la segunda tabla
 
             let n1 = localStorage.getItem("Nombre",n);
+            let a1 = localStorage.getItem("Apellido", a);
             let d1 = localStorage.getItem("Direccion", d);
             let c1 = localStorage.getItem("Curp" ,c);
             let t1 = localStorage.getItem("Telefono",t);
             let k1 = localStorage.getItem("Email",k);
 
-            let array = [n1, d1, c1, t1, k1];
+            let array = [n1,a1, d1, c1, t1, k1];
             return array;
            
     }
@@ -74,7 +77,8 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
         row.insertCell(2).innerHTML = readData[2];
         row.insertCell(3).innerHTML = readData[3];
         row.insertCell(4).innerHTML = readData[4];
-          row.insertCell(5).innerHTML = `<button onclick="edit(this)">Editar</button>
+        row.insertCell(5).innerHTML = readData[5];
+        row.insertCell(6).innerHTML = `<button onclick="edit(this)">Editar</button>
                                           <button onclick="Remove(this)">Borrar</button>`;
       }
   
@@ -82,10 +86,11 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
   function edit(td) {
       row = td.parentElement.parentElement;  
       document.getElementById("Nombre").value = row.cells[0].innerHTML;  
-      document.getElementById("Direccion").value = row.cells[1].innerHTML;
-      document.getElementById("Curp").value = row.cells[2].innerHTML;
-      document.getElementById("Telefono").value = row.cells[3].innerHTML;
-      document.getElementById("Email").value = row.cells[4].innerHTML;                              
+      document.getElementById("Apellido").value = row.cells[1].innerHTML;
+       document.getElementById("Direccion").value = row.cells[2].innerHTML;
+      document.getElementById("Curp").value = row.cells[3].innerHTML;
+      document.getElementById("Telefono").value = row.cells[4].innerHTML;
+      document.getElementById("Email").value = row.cells[5].innerHTML;                              
   }
   
 
@@ -102,9 +107,10 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
     //UPDATE
     function Update() {
         row.cells[0].innerHTML = document.getElementById("Nombre").value;
-        row.cells[1].innerHTML = document.getElementById("Direccion").value;
-        row.cells[2].innerHTML = document.getElementById("Curp").value;
-        row.cells[3].innerHTML = document.getElementById("Telefono").value;
-        row.cells[4].innerHTML = document.getElementById("Email").value;
+        row.cells[1].innerHTML = document.getElementById("Apellido").value;
+        row.cells[2].innerHTML = document.getElementById("Direccion").value;
+        row.cells[3].innerHTML = document.getElementById("Curp").value;
+        row.cells[4].innerHTML = document.getElementById("Telefono").value;
+        row.cells[5].innerHTML = document.getElementById("Email").value;
         row = null; // Resetear row to null despues de actualizar
     }
