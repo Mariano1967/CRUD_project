@@ -45,6 +45,7 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
     }
    //READ
   //Data en localStorage
+  localStorage.setItem("dataEntered", JSON.stringify(dataEntered));
     function readingDataFromLocalstarage(dataEntered) {
     
     //Data guardada en local storage
