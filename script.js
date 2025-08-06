@@ -3,7 +3,9 @@
 //VARIABLES GLOBALES
 
 let row = null;
+//Convierte el string de local storage a un objeto.
 let dataEntered=JSON.parse(localStorage.getItem("dataEntered")) ? JSON.parse(localStorage.getItem("dataEntered")) : [];
+ 
 function Enviar() {
     let dataEntered =retriveData();
     let readData = readingDataFromLocalstarage(dataEntered);
@@ -16,7 +18,7 @@ function Enviar() {
     msg.innerHTML = `<h3 style ="color: green;"> "Datos insertados !"</h3>`;
     } else {
        Update();
-    msg.innerHTML= `<h3 style="color: blue">"Datos actualizados!"</h3>`;
+    msg.innerHTML= `<h3 style="color: blue">"Datos actualizados en local Storage!."</h3>`;
 }
 }
 document.getElementById("form").reset();// Limpiar el formulario después de enviar los datos
@@ -45,8 +47,8 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
     }
    //READ
   //Data en localStorage
-  localStorage.setItem("dataEntered", JSON.stringify(dataEntered));
-    function readingDataFromLocalstarage(dataEntered) {
+  localStorage.setItem("dataEntered", JSON.stringify(dataEntered));// Convierte objectos a string para guardarlo en local storage. 
+     function readingDataFromLocalstarage(dataEntered) {
     
     //Data guardada en local storage
          let n = localStorage.setItem("Nombre", dataEntered[0]);
