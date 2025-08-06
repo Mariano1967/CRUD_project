@@ -3,7 +3,7 @@
 //VARIABLES GLOBALES
 
 let row = null;
-
+let dataEntered=JSON.parse(localStorage.getItem("dataEntered")) ? JSON.parse(localStorage.getItem("dataEntered")) : [];
 function Enviar() {
     let dataEntered =retriveData();
     let readData = readingDataFromLocalstarage(dataEntered);
@@ -23,10 +23,10 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
 } 
   
   
-    document.getElementById("form").reset ();
+   
     
     //CREAR
-   //Funcion para recuperar los datos del formulario
+   //Funcion para recuperar los datos del primer formulario
     function retriveData() {
     let Nombre = document.getElementById("Nombre").value;
     let Apellido = document.getElementById("Apellido").value;
@@ -41,7 +41,7 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
         return false;
     } else {return array;
 
-    }// va a regresar todos los valores que se ingresaron en el formulario con unmensaje de error si no se ingresaron todos los campos
+    }// va a regresar todos los valores que se ingresaron en el formulario con un mensaje de error si no se ingresaron todos los campos
     }
    //READ
   //Data en localStorage
@@ -104,7 +104,7 @@ document.getElementById("form").reset();// Limpiar el formulario después de env
           alert("Registro eliminado");
       }
   }
-    //UPDATE
+    //ACTUALIZAR
     function Update() {
         row.cells[0].innerHTML = document.getElementById("Nombre").value;
         row.cells[1].innerHTML = document.getElementById("Apellido").value;
